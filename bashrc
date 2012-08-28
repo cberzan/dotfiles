@@ -11,7 +11,10 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # Set prompt.
-PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+# Show git branch and dirty bit if we're inside a git repo.
+# PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)") \$ '
+GIT_PS1_SHOWDIRTYSTATE=1
 
 # If this is an xterm, set the title to user@host:dir.
 case "$TERM" in
@@ -46,7 +49,10 @@ HISTFILESIZE=100000
 shopt -s checkwinsize
 
 # Make ** match dirs and files recursively.
-shopt -s globstar
+if [ ${BASH_VERSINFO[0]} -ge 4 ]
+then
+    shopt -s globstar
+fi
 
 # Don't overwrite files using > by accident.
 set -o noclobber
@@ -70,14 +76,43 @@ echo "Logged in at $LOGGED_IN_AT"
 ##############################################################################
 # Aliases:
 
+# Facilitates completion for aliases.
+# See http://ubuntuforums.org/showthread.php?t=733397.
+#
+# Example for alias api='aptitude install':
+# 1) Find out original completion function:
+#    $ complete -p aptitude
+#    complete -o default -F _aptitude aptitude  # we use the "-o default" and "_aptitude" bits
+# 2) Make the completion wrapper:
+#    $ make_completion_wrapper _aptitude _api aptitude install
+# 3) Register the new completion wrapper:
+#    $ complete -o default -F _api api
+#
+function make_completion_wrapper() {
+    local function_name="$2"
+    local arg_count=$(($#-3))
+    local comp_function_name="$1"
+    shift 2
+    local function="
+function $function_name {
+    ((COMP_CWORD+=$arg_count))
+    COMP_WORDS=( "$@" \${COMP_WORDS[@]:1} )
+    "$comp_function_name"
+    return 0
+}"
+    eval "$function"
+    # echo $function_name
+    # echo "$function"
+}
+
 # Color support for ls and grep.
 if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
 fi
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # Aliases for ls.
 alias ll='ls -l'
@@ -85,6 +120,22 @@ alias l='ls -CF'
 alias la='ls -A'
 alias lla='ll -A'
 alias lh='ll -h'
+
+# Aliases for git + completion for them.
+alias gc="git checkout"
+make_completion_wrapper _git _gc git checkout
+complete -o bashdefault -o default -o nospace -F _gc gc
+alias gcm="git checkout master"
+alias gl="git log"
+make_completion_wrapper _git _gl git log
+complete -o bashdefault -o default -o nospace -F _gl gl
+alias gp="git pull"
+alias gs="git status"
+make_completion_wrapper _git _gs git status
+complete -o bashdefault -o default -o nospace -F _gs gs
+alias gw="git show"
+make_completion_wrapper _git _gw git show
+complete -o bashdefault -o default -o nospace -F _gw gw
 
 # Misc shortcuts.
 alias j='jobs'
@@ -120,17 +171,15 @@ alias gh='history |grep '
 # (FIXME: stop it from showing the grep itself in the results
 alias ir='ps aux |head -n 1 && ps aux |grep -i $1'
 
-# "is installed": ii package
-alias ii='dpkg -l |grep -i' # arg
 
-# "aptitude install"
+# APT / dpkg aliases + completion for them.
+alias ii='dpkg -l |grep -i'  # "is installed"
 alias api='sudo aptitude install'
-
-# "apt-cache search"
+# TODO completion
 alias ase='apt-cache search'
-
-# "apt-cache show"
+# TODO completion
 alias ash='apt-cache show'
+# TODO completion
 
 # "lsof grep": lg filename
 alias lg='lsof -n |grep -i '
