@@ -199,6 +199,9 @@ function fndi()
     find . -iname "*$@*"
 }
 
+# kill pyc files
+alias rmpyc="find . -name '*.pyc' -delete"
+
 
 ##############################################################################
 # Obsolete aliases (remove the ones I don't miss):
