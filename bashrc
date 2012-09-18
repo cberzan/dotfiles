@@ -126,7 +126,7 @@ alias gc="git checkout"
 make_completion_wrapper _git _gc git checkout
 complete -o bashdefault -o default -o nospace -F _gc gc
 alias gcm="git checkout master"
-alias gl="git log"
+alias gl="git log --decorate"
 make_completion_wrapper _git _gl git log
 complete -o bashdefault -o default -o nospace -F _gl gl
 alias gp="git pull"
@@ -227,3 +227,5 @@ function fndi()
 if [ -f ~/.bash_private ]; then
     . ~/.bash_private
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
