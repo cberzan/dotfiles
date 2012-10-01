@@ -1,7 +1,6 @@
 # If not running interactively, don't process this file any further.
 [ -z "$PS1" ] && return
 
-
 ##############################################################################
 # Prompt:
 
@@ -25,12 +24,10 @@ xterm*|rxvt*)
     ;;
 esac
 
-
 ##############################################################################
 # Path:
 
 export PATH=$PATH:~/bin
-
 
 ##############################################################################
 # Bash options:
@@ -61,7 +58,6 @@ set -o noclobber
 set -o vi
 bind -m vi-insert "\C-l":clear-screen
 
-
 ##############################################################################
 # Misc:
 
@@ -71,6 +67,13 @@ bind -m vi-insert "\C-l":clear-screen
 # Variable to store when you logged in.
 LOGGED_IN_AT=$(date)
 echo "Logged in at $LOGGED_IN_AT"
+
+# workon home (for virtualenvwrapper)
+if [ -x /usr/local/bin/virtualenvwrapper.sh ]
+then
+    export WORKON_HOME=$HOME/src/virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 
 ##############################################################################
@@ -170,7 +173,6 @@ alias gh='history |grep '
 # "is running": ir python
 # (FIXME: stop it from showing the grep itself in the results
 alias ir='ps aux |head -n 1 && ps aux |grep -i $1'
-
 
 # APT / dpkg aliases + completion for them.
 alias ii='dpkg -l |grep -i'  # "is installed"
