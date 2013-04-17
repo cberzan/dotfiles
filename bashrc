@@ -72,6 +72,9 @@ bind -m vi-insert "\C-l":clear-screen
 LOGGED_IN_AT=$(date)
 echo "Logged in at $LOGGED_IN_AT"
 
+# Set up fasd. https://github.com/clvv/fasd
+eval "$(fasd --init auto)"
+
 
 ##############################################################################
 # Aliases:
@@ -142,10 +145,10 @@ alias j='jobs'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias e='editor'
-alias v='view'
-alias m='less'
-alias a='cat'
+# alias e='editor'
+# alias v='view'
+# alias m='less'
+# alias a='cat'
 alias h='history 30'
 alias hh='history'
 alias dh='df -h'
