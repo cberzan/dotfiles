@@ -31,7 +31,7 @@ au FileType haskell set makeprg=ghc\ --make\ %
 au FileType haskell set suffixes+=,,.hi
 
 " Enable plugins
-set nocp 
+set nocp
 filetype plugin on
 set ofu=syntaxcomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -80,6 +80,24 @@ set pastetoggle=<F6>
 
 " Turn off line numbering for the error buffer
 au BufReadPost quickfix setlocal nonumber
+
+" Vim loads plugins _after_ it finishes interpreting ~/.vimrc.
+" So plugin commands are not available in ~/.vimrc.
+" Have to do them after vim has finished loading.
+autocmd VimEnter * if filereadable(glob("~/.vim_arpeggio")) | source ~/.vim_arpeggio | endif
+
+" Fun with windows and buffers.
+set hidden
+noremap <Leader>j :LustyJuggler<CR>
+
+" TODO:
+" - bring arpeggio mappings here, if possible; otherwise integrate with
+"   dotfiles repo
+" - cnk-style auto folds?
+" - make a minimal version that would work on a foreign machine where I don't
+"   want to install stuff
+" - on a new machine where I want my full setup, make it easy to pull in
+"   pathogen, plugins, etc.
 
 " Account-specific stuff not stored in git.
 if filereadable(glob("~/.vim_private"))
