@@ -81,10 +81,48 @@ set pastetoggle=<F6>
 " Turn off line numbering for the error buffer
 au BufReadPost quickfix setlocal nonumber
 
-" Vim loads plugins _after_ it finishes interpreting ~/.vimrc.
-" So plugin commands are not available in ~/.vimrc.
-" Have to do them after vim has finished loading.
-autocmd VimEnter * if filereadable(glob("~/.vim_arpeggio")) | source ~/.vim_arpeggio | endif
+" *arpeggio mappings {{{1
+
+" Force plugin to load now, instead of after ~/.vimrc is finished processing.
+call arpeggio#load()
+
+" *very common operations* {{{2
+Arpeggio inoremap jk <Esc>
+Arpeggio noremap jf :w<CR>
+Arpeggio noremap we :noh<CR>
+"}}}
+
+" *windows and buffers* {{{2
+Arpeggio noremap wj <C-w>j
+Arpeggio noremap wk <C-w>k
+Arpeggio noremap wl <C-w>l
+Arpeggio noremap wh <C-w>h
+
+Arpeggio noremap WJ <C-w>J
+Arpeggio noremap WK <C-w>K
+Arpeggio noremap WL <C-w>L
+Arpeggio noremap WH <C-w>H
+
+Arpeggio noremap ws <C-w>s
+Arpeggio noremap wv <C-w>v
+Arpeggio noremap wq <C-w>q
+
+Arpeggio noremap go :LustyJuggler<CR>
+Arpeggio noremap gp :CommandT<CR>
+Arpeggio noremap gt :NERDTreeToggle<CR>
+"}}}
+
+" *TODO clean up* {{{2
+Arpeggio noremap ei :Gstatus<CR>
+Arpeggio noremap bui :CommandTBuffer<CR>
+Arpeggio noremap wer :set filetype=
+Arpeggio noremap uw viwu
+Arpeggio noremap UW viwU
+Arpeggio noremap tr Oimport ipdb; ipdb.set_trace()<Esc>V=
+"}}}
+
+"}}}
+
 
 " Fun with windows and buffers.
 set hidden
