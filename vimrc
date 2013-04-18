@@ -1,6 +1,8 @@
 " .vimrc
 "
 " TODO:
+" - integrate pyflakes / etc
+" - abbreviations for custom snippets
 " - make a minimal version that would work on a foreign machine where I don't
 "   want to install stuff
 " - on a new machine where I want my full setup, make it easy to pull in
@@ -98,8 +100,21 @@ map gf :e **/<cfile><cr>    " allow opening files with incomplete paths
                             " (e.g. open bla/bla/a/b when a/b is under cursor)
 cmap w!! %!sudo tee > /dev/null %       " can still save if I forget sudo
 
-" Macro to do include-guard boilerplate.
-" TODO use snippets instead
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }}}
+
+" abbreviations {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" TODO why the heck do these abbreviations add garbage space at end of line?
+
+" print a bunch of stars (stands out from noise)
+iabbrev py* print "*" * 78  # XXX
+
+" set ipdb trace
+iabbrev ipdb; import ipdb; ipdb.set_trace()  # XXX
+
+" TODO port this macro to do include-guard boilerplate.
 " :call setreg('i', 'bywI#ifndef o#define po#endif // pkko')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
