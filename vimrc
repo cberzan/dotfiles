@@ -5,28 +5,36 @@
 "   want to install stuff
 " - on a new machine where I want my full setup, make it easy to pull in
 "   pathogen, plugins, etc.
+"
+" Things left to check out from cnk's vimrc:
+"   - better command-t options
+"   - supertab?
 
 " basics {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible
-set number
-filetype indent on
-filetype plugin on
+set number                  " line numbers
+set ruler                   " coordinates in bottom-right corner
 set ignorecase
 set hlsearch
+set incsearch               " EXPERIMENTING
 set smartcase
 syntax on
 set laststatus=2            " always show status line
 set hidden                  " allow more buffers than windows
 set clipboard=unnamed       " use system clipboard for copy/paste
 set foldmethod=marker       " automatically fold at {{{ }}} markers
+                            " (TODO make this a modeline only in vimrc?)
 map Y y$                    " Y copies till the end of the line
 set modeline
 set wildmenu                " show menu for command-line completion
 set scrolloff=5             " keep some lines below and above the cursor
 
-call pathogen#infect()          " makes plugin installation simple
+call pathogen#infect()      " makes plugin installation simple
+set tags=./tags;$HOME       " ctags
+set undofile                " persistent undo EXPERIMENTING
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
@@ -36,7 +44,9 @@ call pathogen#infect()          " makes plugin installation simple
 
 set textwidth=79
 
-" Default indentation.
+set autoindent              " new line like previous line
+set nosmartindent
+
 set expandtab
 set shiftwidth=4
 set tabstop=4
@@ -49,8 +59,8 @@ set softtabstop=4
 " filetype-specific settings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" ctags
-set tags=./tags;$HOME
+filetype plugin on
+filetype indent off
 
 " Allow long lines for HTML.
 au FileType html set textwidth=0
