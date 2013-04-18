@@ -47,11 +47,11 @@ set textwidth=79
 set autoindent              " new line like previous line
 set nosmartindent
 
+" default indentation (may be overriden by filetype-specific settings)
 set expandtab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-" TODO 4 normally and 2 for html / css
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
@@ -62,15 +62,29 @@ set softtabstop=4
 filetype plugin on
 filetype indent off
 
-" Allow long lines for HTML.
-au FileType html set textwidth=0
-au FileType htmldjango set textwidth=0
+function! SetTwoSpaceMode()
+    setlocal softtabstop=2
+    setlocal tabstop=2
+    setlocal shiftwidth=2
+endfunction
 
-" Turn off line numbering for the error buffer.
-au BufReadPost quickfix setlocal nonumber
+" Makefile
+au FileType make set noexpandtab
+
+" CSS
+au FileType css call SetTwoSpaceMode()
+
+" HTML
+au FileType html set textwidth=0
+au FileType html call SetTwoSpaceMode()
+au FileType htmldjango set textwidth=0
+au FileType htmldjango call SetTwoSpaceMode()
 
 " Arduino
 au BufNewFile,BufRead *.pde set syntax=arduino
+
+" Error buffer
+au BufReadPost quickfix setlocal nonumber
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
