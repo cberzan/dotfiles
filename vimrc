@@ -25,7 +25,6 @@ set smartcase
 syntax on
 set laststatus=2            " always show status line
 set hidden                  " allow more buffers than windows
-set clipboard=unnamed       " use system clipboard for copy/paste
 set foldmethod=marker       " automatically fold at {{{ }}} markers
                             " (TODO make this a modeline only in vimrc?)
 map Y y$                    " Y copies till the end of the line
@@ -158,6 +157,7 @@ Arpeggio inoremap jk <Esc>
 Arpeggio noremap jf :w<CR>
 Arpeggio noremap we :noh<CR>
 Arpeggio noremap sf :set filetype=
+Arpeggio vnoremap gy "*y    " copy to system clipboard
 "}}}
 
 " windows and buffers {{{2
