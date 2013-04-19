@@ -2,7 +2,6 @@
 "
 " TODO:
 " - integrate pyflakes / etc
-" - shortcut to create newline without entering insert mode
 " - jk arpeggio shortcut doesn't work in visual mode
 " - abbreviations for custom snippets
 " - make a minimal version that would work on a foreign machine where I don't
@@ -100,6 +99,14 @@ map <F9> :w<CR>:make<CR>
 map gf :e **/<cfile><cr>    " allow opening files with incomplete paths
                             " (e.g. open bla/bla/a/b when a/b is under cursor)
 cmap w!! %!sudo tee > /dev/null %       " can still save if I forget sudo
+
+" Alt+o / Alt+O to make a new line without entering insert mode.
+" On Linux, we can just map <M-o>. TODO verify
+" On OS X, the terminal sends an actual character, so we need to map that.
+noremap ø o<Esc>
+noremap Ø O<Esc>
+noremap <M-o> o<Esc>
+noremap <M-O> O<Esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
