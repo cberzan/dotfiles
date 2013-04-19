@@ -1,6 +1,7 @@
 " .vimrc
 "
 " TODO:
+" - don't split lines after a one-letter word
 " - integrate pyflakes / etc
 " - jk arpeggio shortcut doesn't work in visual mode
 " - abbreviations for custom snippets
