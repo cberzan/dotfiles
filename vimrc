@@ -36,8 +36,7 @@ set scrolloff=5             " keep some lines below and above the cursor
 
 call pathogen#infect()      " makes plugin installation simple
 set tags=./tags;$HOME       " ctags
-set undofile                " persistent undo EXPERIMENTING
-
+set undolevels=100000
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
