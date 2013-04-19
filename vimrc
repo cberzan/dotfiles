@@ -12,6 +12,7 @@
 " Things left to check out from cnk's vimrc:
 "   - better command-t options
 "   - supertab?
+"   - surround.vim?
 
 " basics {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
