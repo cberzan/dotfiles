@@ -2,6 +2,8 @@
 "
 " TODO:
 " - integrate pyflakes / etc
+" - shortcut to create newline without entering insert mode
+" - jk arpeggio shortcut doesn't work in visual mode
 " - abbreviations for custom snippets
 " - make a minimal version that would work on a foreign machine where I don't
 "   want to install stuff
@@ -157,7 +159,13 @@ Arpeggio inoremap jk <Esc>
 Arpeggio noremap jf :w<CR>
 Arpeggio noremap we :noh<CR>
 Arpeggio noremap sf :set filetype=
-Arpeggio vnoremap gy "*y    " copy to system clipboard
+
+" Note: Can't put indented comments after the line,
+" since the spaces cause the cursor to move!
+" Copy entire file to system clipboard:
+Arpeggio noremap gy :%y*<CR>
+" Copy selection to system clipboard:
+Arpeggio vnoremap gy "*y
 "}}}
 
 " windows and buffers {{{2
