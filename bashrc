@@ -73,8 +73,8 @@ eval "$(fasd --init auto)"
 alias j='fasd_cd -d'
 alias v='fasd -f -e vim'
 alias m='fasd -f -e mplayer'
-alias o='fasd -a -e open'
-# TODO make o work on linux too
+# alias o='fasd -a -e open'  # for OS-X
+alias o='fasd -a -e xdg-open'
 
 # workon home (for virtualenvwrapper)
 if [ -x /usr/local/bin/virtualenvwrapper.sh ]
