@@ -9,3 +9,9 @@ git submodule init
 git submodule update
 ./deploy.py
 ```
+
+## To set up with push access:
+
+Add the machine's ssh key to github config, then clone from
+`git@github.com:cberzan/dotfiles.git` instead of the HTTPS URL.
+Alternatively, edit the URL in `.git/config`.
