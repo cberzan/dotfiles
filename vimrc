@@ -1,9 +1,12 @@
 " .vimrc
 "
 " TODO:
+" - FIXME: copy to clipboard doesn't work reliably on linux
+" - FIXME: up arrow behaves like O on linux
 " - don't split lines after a one-letter word
 " - integrate pyflakes / etc
 " - jk arpeggio shortcut doesn't work in visual mode
+" - lusty emits an error message when vim started as `editor` (e.g. by git commit)
 " - abbreviations for custom snippets
 " - make a minimal version that would work on a foreign machine where I don't
 "   want to install stuff
@@ -30,14 +33,16 @@ set laststatus=2            " always show status line
 set hidden                  " allow more buffers than windows
 set foldmethod=marker       " automatically fold at {{{ }}} markers
                             " (TODO make this a modeline only in vimrc?)
-map Y y$                    " Y copies till the end of the line
 set modeline
 set wildmenu                " show menu for command-line completion
 set scrolloff=5             " keep some lines below and above the cursor
 
+" Y copies till the end of the line (can't have comment after the line, since
+" white space is significant -- it makes the cursor move).
+noremap Y y$
+
 call pathogen#infect()      " makes plugin installation simple
 set tags=./tags;$HOME       " ctags
-set undofile                " persistent undo EXPERIMENTING
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -84,6 +89,10 @@ au FileType html call SetTwoSpaceMode()
 au FileType htmldjango set textwidth=0
 au FileType htmldjango call SetTwoSpaceMode()
 
+" Markdown
+au BufRead,BufNewFile *.md set filetype=markdown
+let g:instant_markdown_slow = 1
+
 " Arduino
 au BufNewFile,BufRead *.pde set syntax=arduino
 
@@ -100,15 +109,19 @@ set pastetoggle=<F6>        " toggle paste mode
 map <F9> :w<CR>:make<CR>
 map gf :e **/<cfile><cr>    " allow opening files with incomplete paths
                             " (e.g. open bla/bla/a/b when a/b is under cursor)
-cmap w!! %!sudo tee > /dev/null %       " can still save if I forget sudo
+
+" Can still save if I forget sudo.
+cmap w!! %!sudo tee > /dev/null %
 
 " Alt+o / Alt+O to make a new line without entering insert mode.
-" On Linux, we can just map <M-o>. TODO verify
-" On OS X, the terminal sends an actual character, so we need to map that.
+" Mapping <M-o> and <M-O> doesn't do squat, because terminals insert weird
+" characters when you press those keys.
+" Linux
+noremap o o<Esc>
+noremap O O<Esc>
+" OS X
 noremap ø o<Esc>
 noremap Ø O<Esc>
-noremap <M-o> o<Esc>
-noremap <M-O> O<Esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
@@ -116,7 +129,18 @@ noremap <M-O> O<Esc>
 " abbreviations {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" TODO why the heck do these abbreviations add garbage space at end of line?
+" Pressing <Tab> or <Space> or <Enter> after one of these will
+" still insert the tab / space / newline after the abbreviation.
+
+" create bash shebang
+iabbrev bash# #!/bin/bash
+
+" create python shebang
+" (:help abbrev and search for "non-id" for some fun restrictions)
+iabbrev py# #!/usr/bin/env python
+
+" create python main block
+iabbrev pyma if __name__ == "__main__":
 
 " print a bunch of stars (stands out from noise)
 iabbrev py* print "*" * 78  # XXX

@@ -174,7 +174,8 @@ alias tpop='cd "$(cat /tmp/pushed_pwd)"'
 alias gh='history |grep '
 
 # "is running": ir python
-# (FIXME: stop it from showing the grep itself in the results
+# (FIXME: stop it from showing the grep itself in the results)
+# (See http://unix.stackexchange.com/a/74186/37542)
 alias ir='ps aux |head -n 1 && ps aux |grep -i $1'
 
 # APT / dpkg aliases + completion for them.
