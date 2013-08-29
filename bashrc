@@ -186,11 +186,14 @@ alias ir='ps aux |head -n 1 && ps aux |grep -i $1'
 # APT / dpkg aliases + completion for them.
 alias ii='dpkg -l |grep -i'  # "is installed"
 alias api='sudo aptitude install'
-# TODO completion
+make_completion_wrapper _aptitude _api aptitude install
+complete -o default -F _api api
 alias ase='apt-cache search'
-# TODO completion
+make_completion_wrapper _apt_cache _ase apt-cache search
+complete -o default -F _ase ase
 alias ash='apt-cache show'
-# TODO completion
+make_completion_wrapper _apt_cache _ash apt-cache show
+complete -o default -F _ash ash
 
 # "lsof grep": lg filename
 alias lg='lsof -n |grep -i '
