@@ -70,6 +70,11 @@ echo "Logged in at $LOGGED_IN_AT"
 
 # Set up fasd. https://github.com/clvv/fasd
 eval "$(fasd --init auto)"
+alias j='fasd_cd -d'
+alias v='fasd -f -e vim'
+alias m='fasd -f -e mplayer'
+alias o='fasd -a -e open'
+# TODO make o work on linux too
 
 # workon home (for virtualenvwrapper)
 if [ -x /usr/local/bin/virtualenvwrapper.sh ]
@@ -144,10 +149,10 @@ make_completion_wrapper _git _gw git show
 complete -o bashdefault -o default -o nospace -F _gw gw
 
 # Misc shortcuts.
-alias j='jobs'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+# alias j='jobs'
 # alias e='editor'
 # alias v='view'
 # alias m='less'

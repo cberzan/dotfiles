@@ -31,6 +31,7 @@ set smartcase
 syntax on
 set laststatus=2            " always show status line
 set hidden                  " allow more buffers than windows
+" FIXME: this adds {{{ }}} in python code when I fold...
 set foldmethod=marker       " automatically fold at {{{ }}} markers
                             " (TODO make this a modeline only in vimrc?)
 set modeline
@@ -44,6 +45,7 @@ noremap Y y$
 call pathogen#infect()      " makes plugin installation simple
 set tags=./tags;$HOME       " ctags
 
+set undolevels=100000
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
@@ -76,6 +78,9 @@ function! SetTwoSpaceMode()
     setlocal tabstop=2
     setlocal shiftwidth=2
 endfunction
+
+" Python
+au FileType python set formatoptions+=cro
 
 " Makefile
 au FileType make set noexpandtab
@@ -144,6 +149,12 @@ iabbrev pyma if __name__ == "__main__":
 
 " print a bunch of stars (stands out from noise)
 iabbrev py* print "*" * 78  # XXX
+
+" nose shortcuts
+iabbrev nae nose.tools.assert_equal
+iabbrev nat nose.tools.assert_true
+iabbrev naf nose.tools.assert_false
+iabbrev nai nose.tools.assert_in
 
 " set ipdb trace
 iabbrev ipdb; import ipdb; ipdb.set_trace()  # XXX
