@@ -13,8 +13,9 @@ import shutil
 # filename in dotfiles -> filename in $HOME
 src2dest = {
     'bashrc': '.bashrc',
-    'vimrc': '.vimrc',
+    'gitconfig': '.gitconfig',
     'vim': '.vim',
+    'vimrc': '.vimrc',
 }
 
 if __name__ == "__main__":
