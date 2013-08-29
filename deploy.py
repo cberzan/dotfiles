@@ -14,6 +14,7 @@ import shutil
 src2dest = {
     'bashrc': '.bashrc',
     'vimrc': '.vimrc',
+    'vim': '.vim',
 }
 
 if __name__ == "__main__":
