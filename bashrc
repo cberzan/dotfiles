@@ -70,7 +70,7 @@ echo "Logged in at $LOGGED_IN_AT"
 
 # Set up fasd. https://github.com/clvv/fasd
 # Skip gracefully if fasd is not installed.
-if [ -x $(which fasd) ]
+if [[ -x $(which fasd) ]]
 then
     eval "$(fasd --init auto)"
     alias j='fasd_cd -d'
