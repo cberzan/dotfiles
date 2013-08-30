@@ -69,12 +69,18 @@ LOGGED_IN_AT=$(date)
 echo "Logged in at $LOGGED_IN_AT"
 
 # Set up fasd. https://github.com/clvv/fasd
-eval "$(fasd --init auto)"
-alias j='fasd_cd -d'
-alias v='fasd -f -e vim'
-alias m='fasd -f -e mplayer'
-# alias o='fasd -a -e open'  # for OS-X
-alias o='fasd -a -e xdg-open'
+# Skip gracefully if fasd is not installed.
+if [ -x $(which fasd) ]
+then
+    eval "$(fasd --init auto)"
+    alias j='fasd_cd -d'
+    alias v='fasd -f -e vim'
+    alias m='fasd -f -e mplayer'
+    # alias o='fasd -a -e open'  # for OS-X
+    alias o='fasd -a -e xdg-open'
+else
+    echo "fasd is not installed; skipping aliases"
+fi
 
 # workon home (for virtualenvwrapper)
 if [ -x /usr/local/bin/virtualenvwrapper.sh ]
