@@ -32,7 +32,7 @@ if __name__ == "__main__":
         if not os.path.exists(src_path):
             raise RuntimeError("Could not find dotfile {}.".format(src_path))
         dest_path = os.path.join(home_dir, dest)
-        if os.path.exists(dest_path):
+        if os.path.lexists(dest_path):
             dest_path_old = dest_path + '.old'
             shutil.move(dest_path, dest_path_old)
             print " -> moved {} to {}".format(dest_path, dest_path_old)
