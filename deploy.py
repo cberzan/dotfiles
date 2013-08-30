@@ -8,6 +8,7 @@ Run this from the dir where dotfiles.git was cloned.
 
 import os
 import shutil
+import subprocess
 
 
 # filename in dotfiles -> filename in $HOME
@@ -19,6 +20,10 @@ src2dest = {
 }
 
 if __name__ == "__main__":
+    # Update submodules.
+    subprocess.call(["git", "submodule", "update", "--init"])
+
+    # Install dotfiles.
     dotfiles_dir = os.getcwd()
     home_dir = os.path.expanduser('~')
     os.chdir(home_dir)

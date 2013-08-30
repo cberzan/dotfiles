@@ -5,8 +5,6 @@ My config files for bash, vim, etc.
 ```console
 git clone https://github.com/cberzan/dotfiles.git
 cd dotfiles
-git submodule init
-git submodule update
 ./deploy.py
 ```
 
