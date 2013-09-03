@@ -32,6 +32,13 @@ export PATH=$PATH:~/bin
 ##############################################################################
 # Bash options:
 
+# Completion.
+# This is commented out by default in /etc/bash.bashrc.
+# Put it here so we don't have to store /etc/bash.bashrc in this repo.
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
 # Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
