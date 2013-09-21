@@ -1,7 +1,6 @@
 " .vimrc
 "
 " TODO:
-" - FIXME: copy to clipboard doesn't work reliably on linux
 " - FIXME: up arrow behaves like O on linux
 " - don't split lines after a one-letter word
 " - integrate pyflakes / etc
@@ -206,10 +205,11 @@ Arpeggio noremap sf :set filetype=
 
 " Note: Can't put indented comments after the line,
 " since the spaces cause the cursor to move!
+" Note: On OSX, use * instead of +.
 " Copy entire file to system clipboard:
-Arpeggio noremap gy :%y*<CR>
+Arpeggio noremap gy :%y+<CR>
 " Copy selection to system clipboard:
-Arpeggio vnoremap gy "*y
+Arpeggio vnoremap gy "+y
 "}}}
 
 " windows and buffers {{{2
@@ -228,6 +228,7 @@ Arpeggio noremap wv <C-w>v
 Arpeggio noremap wq <C-w>q
 
 Arpeggio noremap gj :LustyJuggler<CR>
+Arpeggio noremap gp :LustyJugglePrevious<CR>
 Arpeggio noremap gh :CommandT<CR>
 Arpeggio noremap gt :NERDTreeToggle<CR>
 "}}}

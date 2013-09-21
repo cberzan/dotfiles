@@ -90,6 +90,7 @@ else
 fi
 
 # workon home (for virtualenvwrapper)
+# FIXME: that path is not the case if you aptitude install virtualenvwrapper
 if [ -x /usr/local/bin/virtualenvwrapper.sh ]
 then
     export WORKON_HOME=$HOME/src/virtualenvs
