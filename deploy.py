@@ -15,6 +15,7 @@ import subprocess
 src2dest = {
     'bashrc': '.bashrc',
     'gitconfig': '.gitconfig',
+    'inputrc': '.inputrc',
     'vim': '.vim',
     'vimrc': '.vimrc',
 }

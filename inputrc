@@ -1,0 +1,3 @@
+set editing-mode vi
+C-L: clear-screen
+C-l: clear-screen
