@@ -16,6 +16,8 @@ src2dest = {
     'bashrc': '.bashrc',
     'gitconfig': '.gitconfig',
     'inputrc': '.inputrc',
+    'less': '.less',
+    'lesskey': '.lesskey',
     'vim': '.vim',
     'vimrc': '.vimrc',
 }
