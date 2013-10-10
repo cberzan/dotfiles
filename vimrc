@@ -28,11 +28,9 @@ set hlsearch
 set incsearch               " EXPERIMENTING
 set smartcase
 syntax on
+set background=light
 set laststatus=2            " always show status line
 set hidden                  " allow more buffers than windows
-" FIXME: this adds {{{ }}} in python code when I fold...
-set foldmethod=marker       " automatically fold at {{{ }}} markers
-                            " (TODO make this a modeline only in vimrc?)
 set modeline
 set wildmenu                " show menu for command-line completion
 set scrolloff=5             " keep some lines below and above the cursor
@@ -45,6 +43,8 @@ call pathogen#infect()      " makes plugin installation simple
 set tags=./tags;$HOME       " ctags
 
 set undolevels=100000
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
@@ -263,3 +263,5 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
+
+" vim: set foldmethod=marker:
