@@ -120,12 +120,9 @@ cmap w!! %!sudo tee > /dev/null %
 " Alt+o / Alt+O to make a new line without entering insert mode.
 " Mapping <M-o> and <M-O> doesn't do squat, because terminals insert weird
 " characters when you press those keys.
-" Linux
-noremap o o<Esc>
-noremap O O<Esc>
-" OS X
-noremap ø o<Esc>
-noremap Ø O<Esc>
+" Linux (FIXME: this makes the arrow keys insert lines...)
+" noremap o o<Esc>
+" noremap O O<Esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
@@ -136,27 +133,27 @@ noremap Ø O<Esc>
 " Pressing <Tab> or <Space> or <Enter> after one of these will
 " still insert the tab / space / newline after the abbreviation.
 
-" create bash shebang
-iabbrev bash# #!/bin/bash
-
-" create python shebang
 " (:help abbrev and search for "non-id" for some fun restrictions)
+
+" shebangs
+iabbrev bash# #!/bin/bash
 iabbrev py# #!/usr/bin/env python
 
-" create python main block
+" Python misc
 iabbrev pyma if __name__ == "__main__":
-
-" print a bunch of stars (stands out from noise)
 iabbrev py* print "*" * 78  # XXX
+iabbrev ipdb; import ipdb; ipdb.set_trace()  # XXX
 
-" nose shortcuts
+" Python imports
+iabbrev inp import numpy as np
+iabbrev iplt import matplotlib.pyplot as plt
+iabbrev iimg import matplotlib.image as mpimg
+
+" Python nose
 iabbrev nae nose.tools.assert_equal
 iabbrev nat nose.tools.assert_true
 iabbrev naf nose.tools.assert_false
 iabbrev nai nose.tools.assert_in
-
-" set ipdb trace
-iabbrev ipdb; import ipdb; ipdb.set_trace()  # XXX
 
 " TODO port this macro to do include-guard boilerplate.
 " :call setreg('i', 'bywI#ifndef o#define po#endif // pkko')
