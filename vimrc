@@ -95,6 +95,7 @@ au FileType htmldjango call SetTwoSpaceMode()
 
 " Markdown
 au BufRead,BufNewFile *.md set filetype=markdown
+let g:instant_markdown_autostart = 0
 let g:instant_markdown_slow = 1
 
 " Arduino
