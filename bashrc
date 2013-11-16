@@ -80,13 +80,8 @@ echo "Logged in at $LOGGED_IN_AT"
 if [[ -x $(which fasd) ]]
 then
     eval "$(fasd --init auto)"
-    alias j='fasd_cd -d'
-    alias v='fasd -f -e vim'
-    alias m='fasd -f -e mplayer'
-    # alias o='fasd -a -e open'  # for OS-X
-    alias o='fasd -a -e xdg-open'
 else
-    echo "fasd is not installed; skipping aliases"
+    echo "fasd is not installed; skipping"
 fi
 
 # workon home (for virtualenvwrapper)
@@ -166,11 +161,12 @@ complete -o bashdefault -o default -o nospace -F _gw gw
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-# alias j='jobs'
-# alias e='editor'
-# alias v='view'
-# alias m='less'
-# alias a='cat'
+alias c='cat'
+alias j='jobs'
+alias l='less'
+alias m='mplayer'
+alias o='xdg-open'
+alias v='vim'
 alias h='history 30'
 alias hh='history'
 alias dh='df -h'
