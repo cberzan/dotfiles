@@ -138,3 +138,14 @@ snippet myfigs
 		\caption{${5:title}}
 		\label{fig:${6:ref}}
 	\end{figure}
+
+snippet mytab
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{ccc}
+			foo & bar & baz \\
+			\hline
+		\end{tabular}
+		\caption{${1:title}}
+		\label{tab:${2:ref}}
+	\end{table}
