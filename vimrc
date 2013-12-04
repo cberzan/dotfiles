@@ -95,6 +95,7 @@ au FileType htmldjango call SetTwoSpaceMode()
 
 " Markdown
 au BufRead,BufNewFile *.md set filetype=markdown
+let g:instant_markdown_autostart = 0
 let g:instant_markdown_slow = 1
 
 " Arduino
@@ -145,7 +146,7 @@ iabbrev py* print "*" * 78  # XXX
 iabbrev ipdb; import ipdb; ipdb.set_trace()  # XXX
 
 " Python imports
-iabbrev inp import numpy as np
+iabbrev inpy import numpy as np
 iabbrev iplt import matplotlib.pyplot as plt
 iabbrev iimg import matplotlib.image as mpimg
 
