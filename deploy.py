@@ -15,6 +15,7 @@ import subprocess
 src2dest = {
     'bashrc': '.bashrc',
     'gitconfig': '.gitconfig',
+    'gitignore': '.gitignore',
     'inputrc': '.inputrc',
     'less': '.less',
     'lesskey': '.lesskey',
