@@ -111,6 +111,9 @@ au BufReadPost quickfix setlocal nonumber
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set pastetoggle=<F6>        " toggle paste mode
+map <F2> :cprevious<CR>
+map <F3> :cnext<CR>
+map <F4> :w<CR>:let old_makeprg = &makeprg<CR>:set makeprg=codequality\ %<CR>:make<CR>:let &makeprg = old_makeprg<CR>:cwindow<CR><CR>
 map <F9> :w<CR>:make<CR>
 map gf :e **/<cfile><cr>    " allow opening files with incomplete paths
                             " (e.g. open bla/bla/a/b when a/b is under cursor)
