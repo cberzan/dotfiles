@@ -173,6 +173,7 @@ alias dh='df -h'
 alias dhh='dh ~ /'
 alias md='mkdir'
 alias calc='bc -ql'
+alias trash='trash-put'
 
 # Alter the default behavior of these programs.
 alias gdb='gdb -q'
