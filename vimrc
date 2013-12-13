@@ -34,6 +34,9 @@ set hidden                  " allow more buffers than windows
 set modeline
 set wildmenu                " show menu for command-line completion
 set scrolloff=5             " keep some lines below and above the cursor
+set linebreak               " don't break lines in the middle of a word
+set formatoptions-=o        " don't continue comments when pressing o/O
+
 
 " Y copies till the end of the line (can't have comment after the line, since
 " white space is significant -- it makes the cursor move).
