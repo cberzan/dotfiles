@@ -3,19 +3,12 @@
 " TODO:
 " - FIXME: up arrow behaves like O on linux
 " - don't split lines after a one-letter word
-" - integrate pyflakes / etc
 " - jk arpeggio shortcut doesn't work in visual mode
 " - lusty emits an error message when vim started as `editor` (e.g. by git commit)
 " - abbreviations for custom snippets
 " - make a minimal version that would work on a foreign machine where I don't
 "   want to install stuff
-" - on a new machine where I want my full setup, make it easy to pull in
-"   pathogen, plugins, etc.
 "
-" Things left to check out from cnk's vimrc:
-"   - better command-t options
-"   - supertab?
-"   - surround.vim?
 
 " basics {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
