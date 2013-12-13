@@ -3,19 +3,12 @@
 " TODO:
 " - FIXME: up arrow behaves like O on linux
 " - don't split lines after a one-letter word
-" - integrate pyflakes / etc
 " - jk arpeggio shortcut doesn't work in visual mode
 " - lusty emits an error message when vim started as `editor` (e.g. by git commit)
 " - abbreviations for custom snippets
 " - make a minimal version that would work on a foreign machine where I don't
 "   want to install stuff
-" - on a new machine where I want my full setup, make it easy to pull in
-"   pathogen, plugins, etc.
 "
-" Things left to check out from cnk's vimrc:
-"   - better command-t options
-"   - supertab?
-"   - surround.vim?
 
 " basics {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,6 +27,9 @@ set hidden                  " allow more buffers than windows
 set modeline
 set wildmenu                " show menu for command-line completion
 set scrolloff=5             " keep some lines below and above the cursor
+set linebreak               " don't break lines in the middle of a word
+set formatoptions-=o        " don't continue comments when pressing o/O
+
 
 " Y copies till the end of the line (can't have comment after the line, since
 " white space is significant -- it makes the cursor move).
@@ -44,7 +40,7 @@ set tags=./tags;$HOME       " ctags
 
 set undolevels=100000
 
-
+let NERDSpaceDelims=1       " comment with '# ' instead of just '#'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
@@ -213,6 +209,10 @@ Arpeggio noremap sf :set filetype=
 Arpeggio noremap gy :%y+<CR>
 " Copy selection to system clipboard:
 Arpeggio vnoremap gy "+y
+" Comment lines:
+Arpeggio noremap co :call NERDComment(0, "AlignLeft")<CR>
+" Uncomment lines:
+Arpeggio noremap cu :call NERDComment(0, "Uncomment")<CR>
 "}}}
 
 " windows and buffers {{{2
