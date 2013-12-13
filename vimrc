@@ -40,7 +40,7 @@ set tags=./tags;$HOME       " ctags
 
 set undolevels=100000
 
-
+let NERDSpaceDelims=1       " comment with '# ' instead of just '#'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
@@ -207,6 +207,10 @@ Arpeggio noremap sf :set filetype=
 Arpeggio noremap gy :%y+<CR>
 " Copy selection to system clipboard:
 Arpeggio vnoremap gy "+y
+" Comment lines:
+Arpeggio noremap co :call NERDComment(0, "AlignLeft")<CR>
+" Uncomment lines:
+Arpeggio noremap cu :call NERDComment(0, "Uncomment")<CR>
 "}}}
 
 " windows and buffers {{{2
