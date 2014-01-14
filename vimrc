@@ -8,6 +8,7 @@
 " - abbreviations for custom snippets
 " - make a minimal version that would work on a foreign machine where I don't
 "   want to install stuff
+" - init(self) abbr
 "
 
 " basics {{{1
@@ -36,6 +37,7 @@ set formatoptions-=o        " don't continue comments when pressing o/O
 noremap Y y$
 
 call pathogen#infect()      " makes plugin installation simple
+call pathogen#helptags()
 set tags=./tags;$HOME       " ctags
 
 set undolevels=100000

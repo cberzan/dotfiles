@@ -44,4 +44,9 @@ if __name__ == "__main__":
         os.symlink(src_path, dest)
         print " -> linked {} as {}".format(src_path, dest_path)
 
+    # TODO: Automate the following post steps for Command-T:
+    #   cd ~/.vim/bundle/command-t/ruby/command-t
+    #   ruby extconf.rb
+    #   make
+
     print "Done."
