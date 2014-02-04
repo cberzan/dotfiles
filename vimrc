@@ -8,6 +8,7 @@
 " - abbreviations for custom snippets
 " - make a minimal version that would work on a foreign machine where I don't
 "   want to install stuff
+" - init(self) abbr
 "
 
 " basics {{{1
@@ -36,6 +37,7 @@ set formatoptions-=o        " don't continue comments when pressing o/O
 noremap Y y$
 
 call pathogen#infect()      " makes plugin installation simple
+call pathogen#helptags()
 set tags=./tags;$HOME       " ctags
 
 set undolevels=100000
@@ -109,6 +111,8 @@ au BufReadPost quickfix setlocal nonumber
 set pastetoggle=<F6>        " toggle paste mode
 map <F2> :cprevious<CR>
 map <F3> :cnext<CR>
+" FIXME: the below fails silently if codequality is not installed.
+" perhaps replace it with a function?
 map <F4> :w<CR>:let old_makeprg = &makeprg<CR>:set makeprg=codequality\ %<CR>:make<CR>:let &makeprg = old_makeprg<CR>:cwindow<CR><CR>
 map <F9> :w<CR>:make<CR>
 map gf :e **/<cfile><cr>    " allow opening files with incomplete paths
