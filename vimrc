@@ -114,6 +114,9 @@ map <F3> :cnext<CR>
 " FIXME: the below fails silently if codequality is not installed.
 " perhaps replace it with a function?
 map <F4> :w<CR>:let old_makeprg = &makeprg<CR>:set makeprg=codequality\ %<CR>:make<CR>:let &makeprg = old_makeprg<CR>:cwindow<CR><CR>
+" map <S-F4> :cclose<CR>
+" HACK: gnome-terminal sends this weird sequence for Shift+F4.
+map <Esc>O1;2S :cclose<CR>
 map <F9> :w<CR>:make<CR>
 map gf :e **/<cfile><cr>    " allow opening files with incomplete paths
                             " (e.g. open bla/bla/a/b when a/b is under cursor)
