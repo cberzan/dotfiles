@@ -21,6 +21,7 @@ src2dest = {
     'lesskey': '.lesskey',
     'vim': '.vim',
     'vimrc': '.vimrc',
+    'ipython_config.py': '.config/ipython/profile_default/ipython_config.py',
 }
 
 if __name__ == "__main__":
