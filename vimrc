@@ -91,6 +91,9 @@ au FileType html call SetTwoSpaceMode()
 au FileType htmldjango set textwidth=0
 au FileType htmldjango call SetTwoSpaceMode()
 
+" Java (google style doc says 2 spaces)
+au FileType java call SetTwoSpaceMode()
+
 " Markdown
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:instant_markdown_autostart = 0
