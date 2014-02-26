@@ -162,6 +162,10 @@ iabbrev ipdb; import ipdb; ipdb.set_trace()  # XXX
 iabbrev inpy import numpy as np
 iabbrev iplt import matplotlib.pyplot as plt
 iabbrev iimg import matplotlib.image as mpimg
+iabbrev ictr from collections import Counter
+iabbrev idd from collections import defaultdict
+iabbrev idt import datetime
+iabbrev intup from collections import namedtuple
 
 " Python nose
 iabbrev nae nose.tools.assert_equal
