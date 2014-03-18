@@ -173,6 +173,9 @@ iabbrev nat nose.tools.assert_true
 iabbrev naf nose.tools.assert_false
 iabbrev nai nose.tools.assert_in
 
+" Java misc
+iabbrev pln System.out.println
+
 " TODO port this macro to do include-guard boilerplate.
 " :call setreg('i', 'bywI#ifndef o#define po#endif // pkko')
 
