@@ -26,7 +26,6 @@ set background=light
 set laststatus=2            " always show status line
 set hidden                  " allow more buffers than windows
 set modeline
-set wildmenu                " show menu for command-line completion
 set scrolloff=5             " keep some lines below and above the cursor
 set linebreak               " don't break lines in the middle of a word
 set formatoptions-=o        " don't continue comments when pressing o/O
@@ -43,6 +42,11 @@ set tags=./tags;$HOME       " ctags
 set undolevels=100000
 
 let NERDSpaceDelims=1       " comment with '# ' instead of just '#'
+
+" Smarter tab completion in the command line.
+" (command-t also respects the wildignore list).
+set wildmenu
+set wildignore=*~,*.o,*.class,*.pyc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
@@ -93,6 +97,9 @@ au FileType htmldjango call SetTwoSpaceMode()
 
 " Java (google style doc says 2 spaces)
 au FileType java call SetTwoSpaceMode()
+
+" Scala
+au FileType scala call SetTwoSpaceMode()
 
 " Markdown
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -157,6 +164,7 @@ iabbrev py# #!/usr/bin/env python
 iabbrev pyma if __name__ == "__main__":
 iabbrev py* print "*" * 78  # XXX
 iabbrev ipdb; import ipdb; ipdb.set_trace()  # XXX
+iabbrev pinit def __init__(self):
 
 " Python imports
 iabbrev inpy import numpy as np
