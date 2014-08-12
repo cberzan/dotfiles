@@ -243,6 +243,52 @@ alias rmclass="find . -name '*.class' -delete"
 
 
 ##############################################################################
+# Utils for handling files in ~/Downloads:
+
+DOWNLOADS_DIR="$HOME/Downloads"
+
+function lsdl() {
+    ls --color -1 -t "$DOWNLOADS_DIR" |head |nl
+}
+
+function cpdl() {
+    if [ "a$1" == 'a-h' ] || [ "a$1" == 'a--help' ]; then
+        echo "Usage examples:"
+        echo "    cpdl        # copy most recent download into pwd"
+        echo "    cpdl 3      # copy 3rd most recent download into pwd"
+        echo "    cpdl 3 foo  # copy 3rd most recent download into foo"
+        return 0
+    fi
+
+    # Using "${parameter:-default}" construct.
+    index=${1:-1}
+    dest=${2:-.}
+    filename=$(ls -1 -t ~/Downloads/ |sed -n "$index p")
+    echo "$filename"
+    src="$DOWNLOADS_DIR/$filename"
+    cp "$src" "$dest"
+}
+
+function mvdl() {
+    if [ "a$1" == 'a-h' ] || [ "a$1" == 'a--help' ]; then
+        echo "Usage examples:"
+        echo "    mvdl        # move most recent download into pwd"
+        echo "    mvdl 3      # move 3rd most recent download into pwd"
+        echo "    mvdl 3 foo  # move 3rd most recent download into foo"
+        return 0
+    fi
+
+    # Using "${parameter:-default}" construct.
+    index=${1:-1}
+    dest=${2:-.}
+    filename=$(ls -1 -t ~/Downloads/ |sed -n "$index p")
+    echo "$filename"
+    src="$DOWNLOADS_DIR/$filename"
+    mv "$src" "$dest"
+}
+
+
+##############################################################################
 # Account-specific stuff not stored in git.
 
 if [ -f ~/.bash_private ]; then
