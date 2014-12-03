@@ -177,6 +177,7 @@ iabbrev intup from collections import namedtuple
 
 " Python nose
 iabbrev nae nose.tools.assert_equal
+iabbrev naae nose.tools.assert_almost_equals
 iabbrev nat nose.tools.assert_true
 iabbrev naf nose.tools.assert_false
 iabbrev nai nose.tools.assert_in
