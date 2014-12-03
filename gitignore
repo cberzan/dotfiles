@@ -1,7 +1,10 @@
 *~
 *.aux
+*.bbl
+*.blg
 *.class
 *.log
 *.o
 *.pyc
 *.sw*
+.ipynb_checkpoints/
