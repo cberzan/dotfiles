@@ -137,6 +137,7 @@ alias gc="git checkout"
 make_completion_wrapper _git _gc git checkout
 complete -o bashdefault -o default -o nospace -F _gc gc
 alias gcm="git checkout master"
+alias gg="git gui &"
 alias gl="git log --decorate"
 alias glga="git log --decorate --graph --all"
 make_completion_wrapper _git _gl git log
