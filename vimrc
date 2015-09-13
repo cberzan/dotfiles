@@ -95,6 +95,9 @@ au FileType html call SetTwoSpaceMode()
 au FileType htmldjango set textwidth=0
 au FileType htmldjango call SetTwoSpaceMode()
 
+" JavaScript
+au FileType javascript call SetTwoSpaceMode()
+
 " Java (google style doc says 2 spaces)
 au FileType java call SetTwoSpaceMode()
 
