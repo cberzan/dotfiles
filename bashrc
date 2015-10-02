@@ -290,6 +290,13 @@ function mvdl() {
 
 
 ##############################################################################
+# virtualenvwrapper (installed via pip, not apt)
+
+export WORKON_HOME=$HOME/src/virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+
+##############################################################################
 # Account-specific stuff not stored in git.
 
 if [ -f ~/.bash_private ]; then
