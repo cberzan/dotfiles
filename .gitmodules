@@ -19,3 +19,6 @@
 [submodule "vim/bundle/julia-vim"]
 	path = vim/bundle/julia-vim
 	url = https://github.com/JuliaLang/julia-vim.git
+[submodule "vim/bundle/vim-flake8"]
+	path = vim/bundle/vim-flake8
+	url = https://github.com/nvie/vim-flake8
