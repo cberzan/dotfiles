@@ -122,17 +122,6 @@ au BufReadPost quickfix setlocal nonumber
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set pastetoggle=<F6>        " toggle paste mode
-map <F2> :cprevious<CR>
-map <F3> :cnext<CR>
-" FIXME: the below fails silently if codequality is not installed.
-" perhaps replace it with a function?
-map <F4> :w<CR>:let old_makeprg = &makeprg<CR>:set makeprg=codequality\ %<CR>:make<CR>:let &makeprg = old_makeprg<CR>:cwindow<CR><C-c>
-
-" Make Shift+F4 close the quickfix window:
-" This works in konsole:
-map <S-F4> :cclose<CR>
-" And this works in gnome-terminal:
-map <Esc>O1;2S :cclose<CR>
 
 map <F9> :w<CR>:make<CR>
 map gf :e **/<cfile><cr>    " allow opening files with incomplete paths
@@ -244,6 +233,13 @@ Arpeggio vnoremap gy "+y
 Arpeggio noremap co :call NERDComment(0, "AlignLeft")<CR>
 " Uncomment lines:
 Arpeggio noremap cu :call NERDComment(0, "Uncomment")<CR>
+
+" Flake8:
+Arpeggio noremap pf :call Flake8()<CR>
+Arpeggio noremap zn :cnext<CR>
+Arpeggio noremap zp :cprev<CR>
+Arpeggio noremap PF :cclose<CR>
+
 "}}}
 
 " windows and buffers {{{2
