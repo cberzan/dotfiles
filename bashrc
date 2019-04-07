@@ -2,6 +2,13 @@
 [ -z "$PS1" ] && return
 
 ##############################################################################
+# Account-specific stuff not stored in git.
+
+if [ -f ~/.bash_private_before ]; then
+    . ~/.bash_private_before
+fi
+
+##############################################################################
 # Prompt:
 
 # Set variable identifying the chroot you work in.
@@ -61,10 +68,6 @@ fi
 # Don't overwrite files using > by accident.
 set -o noclobber
 
-# Vi mode.
-# set -o vi
-# bind -m vi-insert "\C-l":clear-screen
-
 ##############################################################################
 # Misc:
 
@@ -83,6 +86,10 @@ then
 else
     echo "fasd is not installed; skipping"
 fi
+
+# virtualenvwrapper (installed via pip, not apt)
+source /usr/local/bin/virtualenvwrapper.sh
+
 
 ##############################################################################
 # Aliases:
@@ -307,17 +314,8 @@ function mvdl() {
 
 
 ##############################################################################
-# virtualenvwrapper (installed via pip, not apt)
-
-export WORKON_HOME=$HOME/src/virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-
-
-##############################################################################
 # Account-specific stuff not stored in git.
 
 if [ -f ~/.bash_private ]; then
     . ~/.bash_private
 fi
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
