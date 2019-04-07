@@ -62,8 +62,8 @@ fi
 set -o noclobber
 
 # Vi mode.
-set -o vi
-bind -m vi-insert "\C-l":clear-screen
+# set -o vi
+# bind -m vi-insert "\C-l":clear-screen
 
 ##############################################################################
 # Misc:
@@ -91,6 +91,9 @@ fi
 # See http://ubuntuforums.org/showthread.php?t=733397.
 #
 # Example for alias api='aptitude install':
+# 0) Perform the original completion in bash once. (As of Ubuntu 14.04, it
+#    appears that completions are loaded lazily, so "complete -p apt-get" will
+#    show "no completion specification" until the completion is actually used.)
 # 1) Find out original completion function:
 #    $ complete -p aptitude
 #    complete -o default -F _aptitude aptitude  # we use the "-o default" and "_aptitude" bits
@@ -188,16 +191,30 @@ alias gh='history |grep '
 alias ir='ps aux |head -n 1 && ps aux |grep -i $1'
 
 # APT / dpkg aliases + completion for them.
+# Force loading of completions. (This works around dynamic loading of
+# completions, which makes the _apt_get, _apt_cache, etc. functions unavailable
+# until they are used for the first time. A more elegant solution would involve
+# expanding the alias and loading the appropriate completion dynamically... See
+# http://ubuntuforums.org/showthread.php?t=733397&p=12601258#post12601258 and
+# http://superuser.com/a/437508/295902)
+# FIXME: Still doesn't work properly... api thun<TAB> behaves differently from
+# sudo apt-get install thun<TAB>...
+if [ -f /usr/share/bash-completion/completions/apt-cache ]; then
+    source /usr/share/bash-completion/completions/apt-cache
+fi
+if [ -f /usr/share/bash-completion/completions/apt-get ]; then
+    source /usr/share/bash-completion/completions/apt-get
+fi
 alias ii='dpkg -l |grep -i'  # "is installed"
-alias api='sudo aptitude install'
-make_completion_wrapper _aptitude _api aptitude install
-complete -o default -F _api api
+alias api='sudo apt-get install'
+make_completion_wrapper _apt_get _api apt-get install
+complete -F _api api
 alias ase='apt-cache search'
 make_completion_wrapper _apt_cache _ase apt-cache search
-complete -o default -F _ase ase
+complete -F _ase ase
 alias ash='apt-cache show'
 make_completion_wrapper _apt_cache _ash apt-cache show
-complete -o default -F _ash ash
+complete -F _ash ash
 
 # "lsof grep": lg filename
 alias lg='lsof -n |grep -i '

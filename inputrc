@@ -1,3 +1,10 @@
 set editing-mode vi
 C-L: clear-screen
 C-l: clear-screen
+
+# \e\C-e: shell-expand-line
+# set -o to check whether vi mode is enabled
+# bind -P to check what something is bound to
+# M-C-e doesn't work, but the above does something s.t. C-e works in insert
+# mode... go figure
+# TODO: also make alt+. work

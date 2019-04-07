@@ -7,3 +7,5 @@
 	default = current
 [core]
 	excludesfile = /home/cberzan/.gitignore
+[diff]
+	tool = vimdiff

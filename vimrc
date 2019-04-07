@@ -240,6 +240,9 @@ Arpeggio noremap zn :cnext<CR>
 Arpeggio noremap zp :cprev<CR>
 Arpeggio noremap PF :cclose<CR>
 
+" YAPF:
+Arpeggio noremap fo :YAPF<CR>
+
 "}}}
 
 " windows and buffers {{{2
