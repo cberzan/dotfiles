@@ -164,9 +164,6 @@ iabbrev pln System.out.println
 :packloadall
 call arpeggio#load()
 
-" Note: docs don't work out of the box; need to run this once:
-" :helptags /home/cberzan/.local/share/nvim/site/pack/cberzan/start/vim-arpeggio/doc
-
 " very common operations {{{2
 Arpeggio inoremap jk <Esc>
 Arpeggio noremap jf :w<CR>

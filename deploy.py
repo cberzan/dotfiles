@@ -35,14 +35,16 @@ src2dest = {
     'inputrc': '.inputrc',
     'less': '.less',
     'lesskey': '.lesskey',
-    'init.vim': '~/.config/nvim/init.vim',
+    'init.vim': '.config/nvim/init.vim',
+    'nvim-packages': '.local/share/nvim/site/pack/cberzan/start',
     # TODO: Re-enable this if useful.
     # 'ipython_config.py': '.config/ipython/profile_default/ipython_config.py',
 }
 
 if __name__ == "__main__":
-    # Update submodules.
-    subprocess.call(["git", "submodule", "update", "--init"])
+    # Fetch submodules.
+    subprocess.call(["git", "submodule", "init"])
+    subprocess.call(["git", "submodule", "update"])
 
     # Install dotfiles. (Assumes cwd is the dotfiles dir.)
     dotfiles_dir = os.getcwd()
@@ -67,5 +69,20 @@ if __name__ == "__main__":
         # TODO: figure out a way to use relpaths, not abspaths for these links.
         os.symlink(src_path, dest)
         print(" -> linked {} as {}".format(src_path, dest_path))
+
+    # TODO: automate the steps below.
+    #
+    # These need to be run from within nvim:
+    #   :helptags /home/cberzan/.local/share/nvim/site/pack/cberzan/start/vim-arpeggio/doc
+    #   :helptags /home/cberzan/.local/share/nvim/site/pack/cberzan/start/command-t/doc
+    #
+    # These need to be run from a shell:
+    #   sudo apt install build-essential ruby ruby-dev
+    #   sudo gem install neovim
+    #   cd ~/.local/share/nvim/site/pack/cberzan/start/command-t/ruby/command-t/ext/command-t
+    #   ruby extconf.rb
+    #   make
+    #
+    # LEFT TODO: check if bashrc needs updating w.r.t. latest mint defaults
 
     print("Done.")
