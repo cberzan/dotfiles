@@ -1,0 +1,15 @@
+[submodule "nvim-packages/command-t"]
+	path = nvim-packages/command-t
+	url = https://github.com/wincent/command-t.git
+[submodule "nvim-packages/lusty"]
+	path = nvim-packages/lusty
+	url = https://github.com/sjbach/lusty.git
+[submodule "nvim-packages/nerdcommenter"]
+	path = nvim-packages/nerdcommenter
+	url = https://github.com/preservim/nerdcommenter.git
+[submodule "nvim-packages/vim-arpeggio"]
+	path = nvim-packages/vim-arpeggio
+	url = https://github.com/kana/vim-arpeggio.git
+[submodule "nvim-packages/vim-gnupg"]
+	path = nvim-packages/vim-gnupg
+	url = https://github.com/jamessan/vim-gnupg.git
