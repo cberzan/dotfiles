@@ -86,8 +86,9 @@ au FileType python set formatoptions+=cro
 " Makefile
 au FileType make set noexpandtab
 
-" CSS
+" CSS and SCSS
 au FileType css call SetTwoSpaceMode()
+au FileType scss call SetTwoSpaceMode()
 
 " HTML
 au FileType html set textwidth=0
@@ -95,8 +96,9 @@ au FileType html call SetTwoSpaceMode()
 au FileType htmldjango set textwidth=0
 au FileType htmldjango call SetTwoSpaceMode()
 
-" JavaScript
+" JavaScript and Typescript
 au FileType javascript call SetTwoSpaceMode()
+au FileType typescript call SetTwoSpaceMode()
 
 " Java (google style doc says 2 spaces)
 au FileType java call SetTwoSpaceMode()
