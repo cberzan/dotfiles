@@ -35,8 +35,7 @@ src2dest = {
     'inputrc': '.inputrc',
     'less': '.less',
     'lesskey': '.lesskey',
-    'vim': '.vim',
-    'vimrc': '.vimrc',
+    'init.vim': '~/.config/nvim/init.vim',
     # TODO: Re-enable this if useful.
     # 'ipython_config.py': '.config/ipython/profile_default/ipython_config.py',
 }
@@ -68,10 +67,5 @@ if __name__ == "__main__":
         # TODO: figure out a way to use relpaths, not abspaths for these links.
         os.symlink(src_path, dest)
         print(" -> linked {} as {}".format(src_path, dest_path))
-
-    # TODO: Automate the following post steps for Command-T:
-    #   cd ~/.vim/bundle/command-t/ruby/command-t
-    #   ruby extconf.rb
-    #   make
 
     print("Done.")

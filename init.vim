@@ -1,69 +1,41 @@
-" .vimrc
-"
-" TODO:
-" - FIXME: up arrow behaves like O on linux
-" - don't split lines after a one-letter word
-" - jk arpeggio shortcut doesn't work in visual mode
-" - lusty emits an error message when vim started as `editor` (e.g. by git commit)
-" - abbreviations for custom snippets
-" - make a minimal version that would work on a foreign machine where I don't
-"   want to install stuff
-" - init(self) abbr
-"
+" Neovim config.
 
 " basics {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible
-set number                  " line numbers
-set ruler                   " coordinates in bottom-right corner
+set number
 set ignorecase
-set hlsearch
-set incsearch               " EXPERIMENTING
 set smartcase
-syntax on
-set background=light
-set laststatus=2            " always show status line
-set hidden                  " allow more buffers than windows
-set modeline
-set scrolloff=5             " keep some lines below and above the cursor
 set linebreak               " don't break lines in the middle of a word
-set formatoptions-=o        " don't continue comments when pressing o/O
-
-
-" Y copies till the end of the line (can't have comment after the line, since
-" white space is significant -- it makes the cursor move).
-noremap Y y$
-
-call pathogen#infect()      " makes plugin installation simple
-call pathogen#helptags()
-set tags=./tags;$HOME       " ctags
-
+set scrolloff=5             " keep some lines below and above the cursor
 set undolevels=100000
-
-let NERDSpaceDelims=1       " comment with '# ' instead of just '#'
-
-" Smarter tab completion in the command line.
-" (command-t also respects the wildignore list).
-set wildmenu
-set wildignore=*~,*.o,*.class,*.pyc
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" }}}
-
-" editing settings {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 set textwidth=79
-
 set autoindent              " new line like previous line
 set nosmartindent
+set foldmethod=marker       " automatically close marked folds in files
+set hidden                  " required by LustyJuggler
 
 " default indentation (may be overriden by filetype-specific settings)
 set expandtab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
+
+" Y copies till the end of the line (can't have comment after the line, since
+" white space is significant -- it makes the cursor move).
+noremap Y y$
+
+" plugin settings
+let NERDSpaceDelims=1       " comment with '# ' instead of just '#'
+
+" Stuff from old vimrc that I'm not sure I need...
+" set tags=./tags;$HOME       " ctags
+" set formatoptions-=o        " don't continue comments when pressing o/O
+
+" Smarter tab completion in the command line.
+" (command-t also respects the wildignore list).
+" set wildmenu
+" set wildignore=*~,*.o,*.class,*.pyc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
@@ -86,9 +58,8 @@ au FileType python set formatoptions+=cro
 " Makefile
 au FileType make set noexpandtab
 
-" CSS and SCSS
+" CSS
 au FileType css call SetTwoSpaceMode()
-au FileType scss call SetTwoSpaceMode()
 
 " HTML
 au FileType html set textwidth=0
@@ -96,9 +67,8 @@ au FileType html call SetTwoSpaceMode()
 au FileType htmldjango set textwidth=0
 au FileType htmldjango call SetTwoSpaceMode()
 
-" JavaScript and Typescript
+" JavaScript
 au FileType javascript call SetTwoSpaceMode()
-au FileType typescript call SetTwoSpaceMode()
 
 " Java (google style doc says 2 spaces)
 au FileType java call SetTwoSpaceMode()
@@ -123,8 +93,6 @@ au BufReadPost quickfix setlocal nonumber
 " shortcuts {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set pastetoggle=<F6>        " toggle paste mode
-
 map <F9> :w<CR>:make<CR>
 map gf :e **/<cfile><cr>    " allow opening files with incomplete paths
                             " (e.g. open bla/bla/a/b when a/b is under cursor)
@@ -132,6 +100,10 @@ map gf :e **/<cfile><cr>    " allow opening files with incomplete paths
 " Can still save if I forget sudo.
 cmap w!! %!sudo tee > /dev/null %
 
+" Old stuff; not sure I still need any of this:
+"
+" set pastetoggle=<F6>        " toggle paste mode
+"
 " Alt+o / Alt+O to make a new line without entering insert mode.
 " Mapping <M-o> and <M-O> doesn't do squat, because terminals insert weird
 " characters when you press those keys.
@@ -185,38 +157,15 @@ iabbrev pln System.out.println
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
 
-" purgatorium {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" map <F3> :lne<CR>
-" map <S-F3> :lp<CR>
-" set guifont=Monospace\ 11
-
-" au FileType haskell set autoindent
-" au FileType haskell set makeprg=ghc\ --make\ %
-" au FileType haskell set suffixes+=,,.hi
-" set wildignore+=*.hi,*.o,*.e
-
-" set ofu=syntaxcomplete#Complete
-" autocmd FileType python set omnifunc=pythoncomplete#Complete
-" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-" This is a good idea in theory, but didn't work well when I tried it.
-" set visualbell              " let's get rid of bad habits
-
-" Macro to add nice underlining to titles.
-" :call setreg('u', 'yypVr-A---')
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" }}}
-
 " arpeggio mappings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Force plugin to load now, instead of after ~/.vimrc is finished processing.
+:packloadall
 call arpeggio#load()
+
+" Note: docs don't work out of the box; need to run this once:
+" :helptags /home/cberzan/.local/share/nvim/site/pack/cberzan/start/vim-arpeggio/doc
 
 " very common operations {{{2
 Arpeggio inoremap jk <Esc>
@@ -269,11 +218,11 @@ Arpeggio noremap gt :NERDTreeToggle<CR>
 "}}}
 
 " TODO clean up {{{2
-Arpeggio noremap ei :Gstatus<CR>
-Arpeggio noremap bui :CommandTBuffer<CR>
-Arpeggio noremap uw viwu
-Arpeggio noremap UW viwU
-Arpeggio noremap tr Oimport ipdb; ipdb.set_trace()<Esc>V=
+" Arpeggio noremap ei :Gstatus<CR>
+" Arpeggio noremap bui :CommandTBuffer<CR>
+" Arpeggio noremap uw viwu
+" Arpeggio noremap UW viwU
+" Arpeggio noremap tr Oimport ipdb; ipdb.set_trace()<Esc>V=
 "}}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -283,7 +232,7 @@ Arpeggio noremap tr Oimport ipdb; ipdb.set_trace()<Esc>V=
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Most of these also have arpeggio shortcuts.
-noremap <Leader>j :LustyJuggler<CR>
+" noremap <Leader>j :LustyJuggler<CR>
 " <Leader>t opens :CommandT
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -299,4 +248,3 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
 
-" vim: set foldmethod=marker:
