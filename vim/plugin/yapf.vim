@@ -1,1 +1,0 @@
-../bundle/yapf/plugins/vim/plugin/yapf.vim
