@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Install dotfiles into $HOME.
@@ -37,7 +37,8 @@ src2dest = {
     'lesskey': '.lesskey',
     'vim': '.vim',
     'vimrc': '.vimrc',
-    'ipython_config.py': '.config/ipython/profile_default/ipython_config.py',
+    # TODO: Re-enable this if useful.
+    # 'ipython_config.py': '.config/ipython/profile_default/ipython_config.py',
 }
 
 if __name__ == "__main__":
@@ -48,7 +49,7 @@ if __name__ == "__main__":
     dotfiles_dir = os.getcwd()
     home_dir = os.path.expanduser('~')
     os.chdir(home_dir)
-    for src, dest in src2dest.iteritems():
+    for src, dest in src2dest.items():
         src_path = os.path.join(dotfiles_dir, src)
         if not os.path.exists(src_path):
             raise RuntimeError("Could not find dotfile {}.".format(src_path))
@@ -56,7 +57,7 @@ if __name__ == "__main__":
         if os.path.lexists(dest_path):
             dest_path_old = dest_path + '.old'
             shutil.move(dest_path, dest_path_old)
-            print " -> moved {} to {}".format(dest_path, dest_path_old)
+            print(" -> moved {} to {}".format(dest_path, dest_path_old))
 
         # Create parent directory.
         head = os.path.split(dest)[0]
@@ -66,11 +67,11 @@ if __name__ == "__main__":
         # Symlink dotfile.
         # TODO: figure out a way to use relpaths, not abspaths for these links.
         os.symlink(src_path, dest)
-        print " -> linked {} as {}".format(src_path, dest_path)
+        print(" -> linked {} as {}".format(src_path, dest_path))
 
     # TODO: Automate the following post steps for Command-T:
     #   cd ~/.vim/bundle/command-t/ruby/command-t
     #   ruby extconf.rb
     #   make
 
-    print "Done."
+    print("Done.")
