@@ -73,8 +73,8 @@ if __name__ == "__main__":
     # TODO: automate the steps below.
     #
     # These need to be run from within nvim:
-    #   :helptags /home/cberzan/.local/share/nvim/site/pack/cberzan/start/vim-arpeggio/doc
-    #   :helptags /home/cberzan/.local/share/nvim/site/pack/cberzan/start/command-t/doc
+    #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/vim-arpeggio/doc
+    #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/command-t/doc
     #
     # These need to be run from a shell:
     #   sudo apt install build-essential ruby ruby-dev
