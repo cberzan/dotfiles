@@ -7,5 +7,6 @@
 *.o
 *.pyc
 *.sw*
+.~lock*
 .ipynb_checkpoints/
 __pycache__/

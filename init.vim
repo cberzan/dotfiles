@@ -111,6 +111,10 @@ cmap w!! %!sudo tee > /dev/null %
 " noremap o o<Esc>
 " noremap O O<Esc>
 
+" Move line up / down. Especially useful for git rebase -i.
+noremap <C-j> :m +1<CR>
+noremap <C-k> :m -2<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
 

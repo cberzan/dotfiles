@@ -42,8 +42,8 @@ export PATH=$PATH:~/bin
 # Completion.
 # This is commented out by default in /etc/bash.bashrc.
 # Put it here so we don't have to store /etc/bash.bashrc in this repo.
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+if [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
 fi
 
 # Don't put duplicate lines or lines starting with space in the history.
@@ -87,8 +87,8 @@ else
     echo "fasd is not installed; skipping"
 fi
 
-# virtualenvwrapper (installed via pip, not apt)
-source /usr/local/bin/virtualenvwrapper.sh
+# virtualenvwrapper
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 
 ##############################################################################
@@ -164,19 +164,13 @@ complete -o bashdefault -o default -o nospace -F _gw gw
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias c='cat'
 alias j='jobs'
 alias l='less'
-alias m='mplayer'
 alias o='xdg-open'
-alias v='vim'
 alias h='history 30'
-alias hh='history'
 alias dh='df -h'
-alias dhh='dh ~ /'
-alias md='mkdir'
+alias dhh='dh /'
 alias calc='bc -ql'
-alias trash='trash-put'
 
 # Alter the default behavior of these programs.
 alias gdb='gdb -q'
@@ -226,9 +220,6 @@ complete -F _ash ash
 # "lsof grep": lg filename
 alias lg='lsof -n |grep -i '
 
-# wordnet query: wn word
-alias wn="dict -d wn"
-
 # fnd foo: find any files in this dir that have foo in their name
 function fnd()
 {
@@ -244,27 +235,6 @@ function fndi()
 # delete compiled files
 alias rmpyc="find . -name '*.pyc' -delete"
 alias rmclass="find . -name '*.class' -delete"
-
-
-##############################################################################
-# Obsolete aliases (remove the ones I don't miss):
-
-# # Obsolete:
-# alias im='mount |grep sd'
-# alias p='pstree -pl'
-# alias rmi='rm -i'
-# alias cpi='cp -i'
-# alias mvi='mv -i'
-# alias rmprog='rm -vf *.o *.e *.bak *~ *.out *.class *.gcov *.gcda *.gcno *.hi'
-# alias rmexe='find -executable -delete'
-# alias ko='kfmclient openURL'
-# alias whatip='w3m -dump whatismyip.org'
-# 
-# # say foo: speak foo using festival.
-# function say()
-# {
-#     echo "$@" |aoss festival --tts
-# }
 
 
 ##############################################################################
