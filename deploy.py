@@ -32,11 +32,12 @@ src2dest = {
     'bashrc': '.bashrc',
     'gitconfig': '.gitconfig',
     'gitignore': '.gitignore',
+    'init.vim': '.config/nvim/init.vim',
     'inputrc': '.inputrc',
     'less': '.less',
     'lesskey': '.lesskey',
-    'init.vim': '.config/nvim/init.vim',
     'nvim-packages': '.local/share/nvim/site/pack/cberzan/start',
+    'profile': '.profile',
     # TODO: Re-enable this if useful.
     # 'ipython_config.py': '.config/ipython/profile_default/ipython_config.py',
 }

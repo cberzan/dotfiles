@@ -166,6 +166,7 @@ alias h='history 30'
 alias dh='df -h'
 alias dhh='dh /'
 alias calc='bc -ql'
+alias trash='gio trash'
 
 # Alter the default behavior of these programs.
 alias gdb='gdb -q'
