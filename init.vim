@@ -28,14 +28,10 @@ noremap Y y$
 " plugin settings
 let NERDSpaceDelims=1       " comment with '# ' instead of just '#'
 
-" Stuff from old vimrc that I'm not sure I need...
-" set tags=./tags;$HOME       " ctags
-" set formatoptions-=o        " don't continue comments when pressing o/O
+" neovim stuff
+set mouse=
+colorscheme vim
 
-" Smarter tab completion in the command line.
-" (command-t also respects the wildignore list).
-" set wildmenu
-" set wildignore=*~,*.o,*.class,*.pyc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
