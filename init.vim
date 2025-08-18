@@ -182,9 +182,9 @@ Arpeggio noremap gy :%y+<CR>
 " Copy selection to system clipboard:
 Arpeggio vnoremap gy "+y
 " Comment lines:
-Arpeggio noremap co :call NERDComment(0, "AlignLeft")<CR>
+Arpeggio noremap co :call nerdcommenter#Comment(0, "AlignLeft")<CR>
 " Uncomment lines:
-Arpeggio noremap cu :call NERDComment(0, "Uncomment")<CR>
+Arpeggio noremap cu :call nerdcommenter#Comment(0, "Uncomment")<CR>
 
 " Flake8:
 Arpeggio noremap pf :call Flake8()<CR>

@@ -74,6 +74,7 @@ if __name__ == "__main__":
     #
     # These need to be run from within nvim:
     #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/vim-arpeggio/doc
+    #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/nerdcommenter/doc
     #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/command-t/doc
     #
     # These need to be run from a shell:
