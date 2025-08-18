@@ -57,6 +57,12 @@ if __name__ == "__main__":
 
     # TODO: automate the steps below.
     #
+    # Install neovim in /opt (see ~/install/neovim/README.cberzan)
+    #
+    # Typically we also need this (for lusty vim plugin; I should find an alternative):
+    #   apt install ruby ruby-dev
+    #   sudo gem install neovim
+    #
     # These need to be run from within nvim:
     #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/vim-arpeggio/doc
     #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/nerdcommenter/doc
