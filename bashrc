@@ -89,38 +89,6 @@ source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 ##############################################################################
 # Aliases:
 
-# Facilitates completion for aliases.
-# See http://ubuntuforums.org/showthread.php?t=733397.
-#
-# Example for alias api='aptitude install':
-# 0) Perform the original completion in bash once. (As of Ubuntu 14.04, it
-#    appears that completions are loaded lazily, so "complete -p apt-get" will
-#    show "no completion specification" until the completion is actually used.)
-# 1) Find out original completion function:
-#    $ complete -p aptitude
-#    complete -o default -F _aptitude aptitude  # we use the "-o default" and "_aptitude" bits
-# 2) Make the completion wrapper:
-#    $ make_completion_wrapper _aptitude _api aptitude install
-# 3) Register the new completion wrapper:
-#    $ complete -o default -F _api api
-#
-function make_completion_wrapper() {
-    local function_name="$2"
-    local arg_count=$(($#-3))
-    local comp_function_name="$1"
-    shift 2
-    local function="
-function $function_name {
-    ((COMP_CWORD+=$arg_count))
-    COMP_WORDS=( "$@" \${COMP_WORDS[@]:1} )
-    "$comp_function_name"
-    return 0
-}"
-    eval "$function"
-    # echo $function_name
-    # echo "$function"
-}
-
 # Color support for ls and grep.
 if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
@@ -138,22 +106,19 @@ alias lla='ll -A'
 alias lh='ll -h'
 
 # Aliases for git + completion for them.
+source /usr/share/bash-completion/completions/git
 alias gc="git checkout"
-make_completion_wrapper _git _gc git checkout
-complete -o bashdefault -o default -o nospace -F _gc gc
+__git_complete gc _git_checkout
 alias gcm="git checkout master"
 alias gg="git gui &"
 alias gl="git log --decorate"
+__git_complete gl _git_log
 alias glga="git log --decorate --graph --all"
-make_completion_wrapper _git _gl git log
-complete -o bashdefault -o default -o nospace -F _gl gl
 alias gp="git pull"
 alias gs="git status"
-make_completion_wrapper _git _gs git status
-complete -o bashdefault -o default -o nospace -F _gs gs
+__git_complete gs _git_status
 alias gw="git show"
-make_completion_wrapper _git _gw git show
-complete -o bashdefault -o default -o nospace -F _gw gw
+__git_complete gw _git_show
 
 # Misc shortcuts.
 alias ..='cd ..'
