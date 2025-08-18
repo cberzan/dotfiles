@@ -32,16 +32,6 @@ xterm*|rxvt*)
 esac
 
 ##############################################################################
-# Path:
-
-export PATH="$PATH:~/bin"
-
-# Neovim is installed locally, since the mint / ubuntu package is too old.
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-alias vim=nvim
-alias vimdiff="nvim -d"
-
-##############################################################################
 # Bash options:
 
 # Completion.
