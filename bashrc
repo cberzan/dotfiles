@@ -187,31 +187,8 @@ alias gh='history |grep '
 # (See http://unix.stackexchange.com/a/74186/37542)
 alias ir='ps aux |head -n 1 && ps aux |grep -i $1'
 
-# APT / dpkg aliases + completion for them.
-# Force loading of completions. (This works around dynamic loading of
-# completions, which makes the _apt_get, _apt_cache, etc. functions unavailable
-# until they are used for the first time. A more elegant solution would involve
-# expanding the alias and loading the appropriate completion dynamically... See
-# http://ubuntuforums.org/showthread.php?t=733397&p=12601258#post12601258 and
-# http://superuser.com/a/437508/295902)
-# FIXME: Still doesn't work properly... api thun<TAB> behaves differently from
-# sudo apt-get install thun<TAB>...
-if [ -f /usr/share/bash-completion/completions/apt-cache ]; then
-    source /usr/share/bash-completion/completions/apt-cache
-fi
-if [ -f /usr/share/bash-completion/completions/apt-get ]; then
-    source /usr/share/bash-completion/completions/apt-get
-fi
-alias ii='dpkg -l |grep -i'  # "is installed"
-alias api='sudo apt-get install'
-make_completion_wrapper _apt_get _api apt-get install
-complete -F _api api
-alias ase='apt-cache search'
-make_completion_wrapper _apt_cache _ase apt-cache search
-complete -F _ase ase
-alias ash='apt-cache show'
-make_completion_wrapper _apt_cache _ash apt-cache show
-complete -F _ash ash
+# "is installed": ii upower
+alias ii='dpkg -l |grep -i'
 
 # "lsof grep": lg filename
 alias lg='lsof -n |grep -i '
