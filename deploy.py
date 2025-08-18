@@ -6,25 +6,9 @@ Install dotfiles into $HOME.
 Run this from the dir where dotfiles.git was cloned.
 """
 
-import errno
 import os
 import shutil
 import subprocess
-
-
-def mkdir_p(path):
-    """
-    Like mkdir -p.
-
-    From http://stackoverflow.com/a/600612/744071.
-    """
-    try:
-        os.makedirs(path)
-    except OSError as exc:
-        if exc.errno == errno.EEXIST and os.path.isdir(path):
-            pass
-        else:
-            raise
 
 
 # filename in dotfiles -> filename in $HOME
@@ -62,9 +46,9 @@ if __name__ == "__main__":
             print(" -> moved {} to {}".format(dest_path, dest_path_old))
 
         # Create parent directory.
-        head = os.path.split(dest)[0]
+        head = os.path.dirname(dest)
         if head:
-            mkdir_p(head)
+            os.makedirs(head, exist_ok=True)
 
         # Symlink dotfile.
         # TODO: figure out a way to use relpaths, not abspaths for these links.
