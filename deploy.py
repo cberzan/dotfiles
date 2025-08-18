@@ -77,10 +77,7 @@ if __name__ == "__main__":
     #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/command-t/doc
     #
     # These need to be run from a shell:
-    #   sudo apt install build-essential ruby ruby-dev
-    #   sudo gem install neovim
     #   cd ~/.local/share/nvim/site/pack/cberzan/start/command-t/ruby/command-t/ext/command-t
-    #   ruby extconf.rb
     #   make
     #
     # LEFT TODO: check if bashrc needs updating w.r.t. latest mint defaults
