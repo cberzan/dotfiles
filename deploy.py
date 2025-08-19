@@ -63,15 +63,13 @@ if __name__ == "__main__":
     #   apt install ruby ruby-dev
     #   sudo gem install neovim
     #
-    # These need to be run from within nvim:
+    # These need to be run from within nvim (consider using a plugin manager instead):
     #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/vim-arpeggio/doc
     #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/nerdcommenter/doc
     #   :helptags ~/.local/share/nvim/site/pack/cberzan/start/command-t/doc
     #
     # These need to be run from a shell:
-    #   cd ~/.local/share/nvim/site/pack/cberzan/start/command-t/ruby/command-t/ext/command-t
+    #   cd ~/.local/share/nvim/site/pack/cberzan/start/command-t
     #   make
-    #
-    # LEFT TODO: check if bashrc needs updating w.r.t. latest mint defaults
 
     print("Done.")
