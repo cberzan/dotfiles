@@ -9,7 +9,7 @@ set smartcase
 set linebreak               " don't break lines in the middle of a word
 set scrolloff=5             " keep some lines below and above the cursor
 set undolevels=100000
-set textwidth=79
+set textwidth=88
 set autoindent              " new line like previous line
 set nosmartindent
 set foldmethod=marker       " automatically close marked folds in files
