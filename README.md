@@ -9,6 +9,13 @@ cd dotfiles
 # then there are some manual steps at the bottom of deploy.py
 ```
 
+To convert the read-only repo to a push-allowed repo (assuming the proper ssh keys are
+in place), make the following edit to `.git/config`:
+
+    -url = https://github.com/wmusial/dotfiles.git
+    +url = git@github.com:cberzan/dotfiles.git
+
+
 ## To set up with push access:
 
 Add the machine's ssh key to github config, then clone from
