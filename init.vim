@@ -182,14 +182,8 @@ Arpeggio noremap co :call nerdcommenter#Comment(0, "AlignLeft")<CR>
 " Uncomment lines:
 Arpeggio noremap cu :call nerdcommenter#Comment(0, "Uncomment")<CR>
 
-" Flake8:
-Arpeggio noremap pf :call Flake8()<CR>
-Arpeggio noremap zn :cnext<CR>
-Arpeggio noremap zp :cprev<CR>
-Arpeggio noremap PF :cclose<CR>
-
-" YAPF:
-Arpeggio noremap fo :YAPF<CR>
+" ruff (TODO: set up proper LSP, see https://docs.astral.sh/ruff/editors/setup/#neovim)
+Arpeggio noremap fo :!ruff check --select I --fix && ruff format<CR>
 
 "}}}
 

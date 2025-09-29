@@ -85,6 +85,9 @@ fi
 # virtualenvwrapper
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
+# activate a virtualenv created by uv
+alias activate=". .venv/bin/activate"
+
 
 ##############################################################################
 # Aliases:
