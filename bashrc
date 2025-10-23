@@ -85,8 +85,10 @@ fi
 # virtualenvwrapper
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
-# activate a virtualenv created by uv
+# Convenience commands for virtualenvs created by uv
 alias activate=". .venv/bin/activate"
+alias cdproject='cd $(dirname $(python -c "import sys; print(sys.prefix)"))'
+alias cdsitepackages='cd $(python -c "import site; print(site.getsitepackages()[0])")'
 
 
 ##############################################################################
@@ -100,6 +102,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias rgi='rg --no-ignore'
 
 # Aliases for ls.
 alias ll='ls -l'

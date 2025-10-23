@@ -58,9 +58,9 @@ au FileType make set noexpandtab
 au FileType css call SetTwoSpaceMode()
 
 " HTML
-au FileType html set textwidth=0
+" au FileType html set textwidth=0
 au FileType html call SetTwoSpaceMode()
-au FileType htmldjango set textwidth=0
+" au FileType htmldjango set textwidth=0
 au FileType htmldjango call SetTwoSpaceMode()
 
 " JavaScript

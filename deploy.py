@@ -60,7 +60,7 @@ if __name__ == "__main__":
     # Install neovim in /opt (see ~/install/neovim/README.cberzan)
     #
     # Typically we also need this (for lusty vim plugin; I should find an alternative):
-    #   apt install ruby ruby-dev
+    #   apt install build-essential ruby ruby-dev
     #   sudo gem install neovim
     #
     # These need to be run from within nvim (consider using a plugin manager instead):
