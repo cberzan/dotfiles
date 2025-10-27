@@ -14,6 +14,7 @@ set autoindent              " new line like previous line
 set nosmartindent
 set foldmethod=marker       " automatically close marked folds in files
 set hidden                  " required by LustyJuggler
+" set exrc                    " allow project-local config files (see :trust)
 
 " default indentation (may be overriden by filetype-specific settings)
 set expandtab
@@ -202,18 +203,21 @@ Arpeggio noremap ws <C-w>s
 Arpeggio noremap wv <C-w>v
 Arpeggio noremap wq <C-w>q
 
-Arpeggio noremap gj :LustyJuggler<CR>
-Arpeggio noremap gp :LustyJugglePrevious<CR>
-Arpeggio noremap gh :CommandT<CR>
+" TODO: CommandTCommand also seems useful
+" TODO: CommandTLine also seems useful
+" TODO: not sure if CommandTBuffer or CommandTJump is better for me
+" Arpeggio noremap gj :CommandTBuffer<CR>
+Arpeggio noremap gj :CommandTJump<CR>
+Arpeggio noremap gh :CommandTRipgrep<CR>
 Arpeggio noremap gt :NERDTreeToggle<CR>
+" Arpeggio noremap gj :LustyJuggler<CR>
+" Arpeggio noremap gp :LustyJugglePrevious<CR>
 "}}}
 
 " TODO clean up {{{2
 " Arpeggio noremap ei :Gstatus<CR>
-" Arpeggio noremap bui :CommandTBuffer<CR>
 " Arpeggio noremap uw viwu
 " Arpeggio noremap UW viwU
-" Arpeggio noremap tr Oimport ipdb; ipdb.set_trace()<Esc>V=
 "}}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
