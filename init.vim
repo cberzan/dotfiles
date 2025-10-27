@@ -183,7 +183,7 @@ Arpeggio noremap co :call nerdcommenter#Comment(0, "AlignLeft")<CR>
 Arpeggio noremap cu :call nerdcommenter#Comment(0, "Uncomment")<CR>
 
 " ruff (TODO: set up proper LSP, see https://docs.astral.sh/ruff/editors/setup/#neovim)
-Arpeggio noremap fo :!ruff check --select I --fix && ruff format<CR>
+Arpeggio noremap fo :!ruff check --fix && ruff format<CR>
 
 "}}}
 
