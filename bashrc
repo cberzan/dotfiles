@@ -102,7 +102,11 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias rgi='rg --no-ignore'
+
+# Aliases for ripgrep, fd.
+alias rgu='rg -u'
+alias fd='fdfind'
+alias fdu='fdfind -u'
 
 # Aliases for ls.
 alias ll='ls -l'
