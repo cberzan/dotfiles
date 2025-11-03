@@ -208,10 +208,13 @@ Arpeggio noremap wq <C-w>q
 " TODO: not sure if CommandTBuffer or CommandTJump is better for me
 " Arpeggio noremap gj :CommandTBuffer<CR>
 Arpeggio noremap gj :CommandTJump<CR>
+" ripgrep variant respects gitignore etc; regular variant includes all files
 Arpeggio noremap gh :CommandTRipgrep<CR>
+Arpeggio noremap GH :CommandT<CR>
 Arpeggio noremap gt :NERDTreeToggle<CR>
 " Arpeggio noremap gj :LustyJuggler<CR>
 " Arpeggio noremap gp :LustyJugglePrevious<CR>
+Arpeggio noremap gp :b#<CR>
 "}}}
 
 " TODO clean up {{{2
