@@ -90,6 +90,9 @@ alias activate=". .venv/bin/activate"
 alias cdproject='cd $(dirname $(python -c "import sys; print(sys.prefix)"))'
 alias cdsitepackages='cd $(python -c "import site; print(site.getsitepackages()[0])")'
 
+# Default go workspace
+export GOPATH="$HOME/nobackup/go"
+
 
 ##############################################################################
 # Aliases:
