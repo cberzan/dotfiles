@@ -28,7 +28,7 @@ fi
 
 # Hack to make trash work (somewhat) with btrfs subvolumes.
 if [ -d "/opt/glib-2.80" ]; then
-    if [ "$(dpkg-query --showformat='${Version}' --show libglib2.0-bin)" = "2.80.0-6ubuntu3.4" ]; then
+    if [ "$(dpkg-query --showformat='${Version}' --show libglib2.0-bin)" = "2.80.0-6ubuntu3.7" ]; then
         export PATH=/opt/glib-2.80/bin:$PATH
         export LD_LIBRARY_PATH=/opt/glib-2.80/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
         export PKG_CONFIG_PATH=/opt/glib-2.80/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
