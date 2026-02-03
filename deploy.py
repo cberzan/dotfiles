@@ -22,6 +22,7 @@ src2dest = {
     'lesskey': '.lesskey',
     'nvim-packages': '.local/share/nvim/site/pack/cberzan/start',
     'profile': '.profile',
+    'agent-skills': '.claude/skills',
     # TODO: Re-enable this if useful.
     # 'ipython_config.py': '.config/ipython/profile_default/ipython_config.py',
 }
